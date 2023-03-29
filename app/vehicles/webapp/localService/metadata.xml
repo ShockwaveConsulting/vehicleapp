@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="AutoAppService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Driver" EntityType="AutoAppService.Driver"/>
+                <EntitySet Name="Vehicle" EntityType="AutoAppService.Vehicle"/>
+                <EntitySet Name="Itinerary" EntityType="AutoAppService.Itinerary">
+                    <NavigationPropertyBinding Path="Vehicle" Target="Vehicle"/>
+                    <NavigationPropertyBinding Path="Driver" Target="Driver"/>
+                </EntitySet>
+                <EntitySet Name="Insurance" EntityType="AutoAppService.Insurance"/>
+                <EntitySet Name="Policy" EntityType="AutoAppService.Policy">
+                    <NavigationPropertyBinding Path="Insurance" Target="Insurance"/>
+                    <NavigationPropertyBinding Path="Vehicle" Target="Vehicle"/>
+                </EntitySet>
+            </EntityContainer>
+            <EntityType Name="Driver">
+                <Key>
+                    <PropertyRef Name="DriverUID"/>
+                </Key>
+                <Property Name="DriverUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="FName" Type="Edm.String" MaxLength="50"/>
+                <Property Name="LName" Type="Edm.String" MaxLength="50"/>
+                <Property Name="DLNumber" Type="Edm.String" MaxLength="10"/>
+                <Property Name="DLExpirationDt" Type="Edm.Date"/>
+                <Property Name="DLState" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Title" Type="Edm.String" MaxLength="50"/>
+                <Property Name="IsActive" Type="Edm.Int32"/>
+                <Property Name="CreatedDt" Type="Edm.Date"/>
+            </EntityType>
+            <EntityType Name="Vehicle">
+                <Key>
+                    <PropertyRef Name="VehicleUID"/>
+                </Key>
+                <Property Name="VehicleUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="VIN" Type="Edm.String" MaxLength="50"/>
+                <Property Name="LicensePlate" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Driver" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Year" Type="Edm.Int32"/>
+                <Property Name="Brand" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Model" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Color" Type="Edm.String" MaxLength="50"/>
+                <Property Name="IsElectric" Type="Edm.Int32"/>
+                <Property Name="CreatedDt" Type="Edm.Date"/>
+            </EntityType>
+            <EntityType Name="Itinerary">
+                <Key>
+                    <PropertyRef Name="ItineraryUID"/>
+                </Key>
+                <Property Name="ItineraryUID" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="Vehicle" Type="AutoAppService.Vehicle">
+                    <ReferentialConstraint Property="Vehicle_VehicleUID" ReferencedProperty="VehicleUID"/>
+                </NavigationProperty>
+                <Property Name="Vehicle_VehicleUID" Type="Edm.Guid"/>
+                <NavigationProperty Name="Driver" Type="AutoAppService.Driver">
+                    <ReferentialConstraint Property="Driver_DriverUID" ReferencedProperty="DriverUID"/>
+                </NavigationProperty>
+                <Property Name="Driver_DriverUID" Type="Edm.Guid"/>
+                <Property Name="InTime" Type="Edm.TimeOfDay"/>
+                <Property Name="OutTime" Type="Edm.TimeOfDay"/>
+                <Property Name="InCoordsLatLon" Type="Edm.String" MaxLength="20"/>
+                <Property Name="OutCoordsLatLon" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CreatedDt" Type="Edm.Date"/>
+            </EntityType>
+            <EntityType Name="Insurance">
+                <Key>
+                    <PropertyRef Name="InsuranceUID"/>
+                </Key>
+                <Property Name="InsuranceUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="AgencyName" Type="Edm.String" MaxLength="50"/>
+                <Property Name="CreatedDt" Type="Edm.Date"/>
+            </EntityType>
+            <EntityType Name="Policy">
+                <Key>
+                    <PropertyRef Name="PolicyUID"/>
+                </Key>
+                <Property Name="PolicyUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="PolicyNumber" Type="Edm.String" MaxLength="50"/>
+                <NavigationProperty Name="Insurance" Type="AutoAppService.Insurance">
+                    <ReferentialConstraint Property="Insurance_InsuranceUID" ReferencedProperty="InsuranceUID"/>
+                </NavigationProperty>
+                <Property Name="Insurance_InsuranceUID" Type="Edm.Guid"/>
+                <NavigationProperty Name="Vehicle" Type="AutoAppService.Vehicle">
+                    <ReferentialConstraint Property="Vehicle_VehicleUID" ReferencedProperty="VehicleUID"/>
+                </NavigationProperty>
+                <Property Name="Vehicle_VehicleUID" Type="Edm.Guid"/>
+                <Property Name="EffectiveDt" Type="Edm.Date"/>
+                <Property Name="ExpirationDt" Type="Edm.Date"/>
+                <Property Name="CreatedDt" Type="Edm.Date"/>
+            </EntityType>
+            <Annotations Target="AutoAppService.Driver/DriverUID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="AutoAppService.Vehicle/VehicleUID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="AutoAppService.Itinerary/ItineraryUID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="AutoAppService.Insurance/InsuranceUID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="AutoAppService.Policy/PolicyUID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

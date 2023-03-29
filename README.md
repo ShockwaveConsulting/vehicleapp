@@ -29,4 +29,18 @@ Learn more at https://cap.cloud.sap/docs/get-started/.
 - prereqs: node, npm, cds, hana-cli, cf
 - Open Templates
 - Select CAP
-- 
+- add cds models and data
+- add srv cds
+- cds build
+- create hdi (cf create-service)
+- create hdi key (cf create-service-key)
+- cds deploy (see script in package.json)
+- open dbx and see data (use key username and password to connect)
+- cds watch hybrid to run local and see remote data
+- cds add approuter (npm install inside app folder)
+- fiori templates (add freestyle)
+- create xsuaa service
+- create xsuaa service keycf
+- cds bind -2 vehicleapp-auth1:default
+- fix xs-app json to include route authentication
+- cds bind (cds bind --exec npm run app  )

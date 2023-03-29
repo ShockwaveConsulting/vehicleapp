@@ -1,0 +1,5 @@
+DriverUID,Fname,Lname,DLNumber,DLExpirationDt,DLState,Title,IsActive,CreatedDt
+29bc07f0-da93-4cbe-bf0c-8d9ceb6f7108,Sergio,Guerrero,12345678,2025/01/01,TX,Driver,1,2023/03/21
+6d28fc32-1080-4e1f-8544-4559e4dc0eaf,Joe,Murray,98765435,2025/02/25,TX,Driver,1,2023/03/21
+4e56ba82-83d1-4de8-87d7-b102717d93be,Prashant,Aware,67849586,2026/06/14,IA,Driver,1,2023/03/21
+a977f55f-be82-4a3f-a3b5-c230a75dd36b,Manish,Patil,65241526,2027/09/15,TX,Driver,1,2023/03/21

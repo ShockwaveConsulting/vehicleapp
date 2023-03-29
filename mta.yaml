@@ -22,7 +22,8 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      - name: vehicleapp-db
+      - name: vehicleapp-dev1
+      - name: vehicleapp-auth1
 
   - name: vehicleapp-db-deployer
     type: hdb
@@ -30,11 +31,36 @@ modules:
     parameters:
       buildpack: nodejs_buildpack
     requires:
-      - name: vehicleapp-db
+      - name: vehicleapp-dev1
+
+  - name: vehicleapp
+    type: approuter.nodejs
+    path: app/ # from cds.env.folders. Consider also cds.env.build.target -> gen/app
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: vehicleapp-auth1
 
 resources:
-  - name: vehicleapp-db
+  - name: vehicleapp-dev1
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: vehicleapp-auth1
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: vehicleapp-${org}-${space}
+        tenant-mode: dedicated
