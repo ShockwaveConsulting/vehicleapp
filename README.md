@@ -23,3 +23,10 @@ File or Folder | Purpose
 ## Learn More
 
 Learn more at https://cap.cloud.sap/docs/get-started/.
+
+
+## Notes
+- prereqs: node, npm, cds, hana-cli, cf
+- Open Templates
+- Select CAP
+- 
