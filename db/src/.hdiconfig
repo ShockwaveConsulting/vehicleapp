@@ -133,7 +133,7 @@
                 },
                 "hdbvirtualtableconfig": {
                     "plugin_name": "com.sap.hana.di.virtualtable.config"
-                }
+                }                
             }
         }
         

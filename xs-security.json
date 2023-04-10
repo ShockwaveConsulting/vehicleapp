@@ -1,6 +1,6 @@
-{  
-  "xsappname" : "vehicleapp",
-  "tenant-mode"  :"dedicated",
+{
+  "xsappname": "vehicleapp",
+  "tenant-mode": "dedicated",
   "scopes": [
     {
       "name": "$XSAPPNAME.Admin",
@@ -18,14 +18,14 @@
       "attribute-references": []
     }
   ],
-  "oauth2-configuration" :{
-    "credential-types" : [
-      "binding-secret", 
+  "oauth2-configuration": {
+    "credential-types": [
+      "binding-secret",
       "x509"
     ],
-    "redirect-uris" : [
+    "redirect-uris": [
       "https://*.applicationstudio.cloud.sap/**",
-      "http://localhost:5000/**"      
+      "http://localhost:5000/**"
     ]
   }
 }
