@@ -10,7 +10,7 @@
         toggleHeaderOnTitleClick="false">
 
         <semantic:titleHeading>
-            <Title
+            <Title id="title"
                 text="{i18n>worklistTitle}"
                 level="H2"/>
         </semantic:titleHeading>
@@ -33,18 +33,19 @@
                 updateFinished=".onUpdateFinished">
 
                 <headerToolbar>
-                    <OverflowToolbar>
+                    <OverflowToolbar id="ofToolBar">
                         <Title
                             id="tableHeader"
                             text="{worklistView>/worklistTableTitle}"
                             level="H3"/>
-                        <ToolbarSpacer />
+                        <ToolbarSpacer id="toolbarSpacer" />
                         <SearchField
                             id="searchField"
                             tooltip="{i18n>worklistSearchTooltip}"
                             search=".onSearch">
                             <layoutData>
                                 <OverflowToolbarLayoutData
+                                    id="ofToolbarLayoutData"
                                     maxWidth="200px"
                                     priority="NeverOverflow"/>
                             </layoutData>
@@ -54,21 +55,37 @@
 
                 <columns>
                     <Column id="nameColumn">
-                        <Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+                        <Text text="DriverUID" id="nameColumnTitle"/>
+                    </Column>                    
+                    <Column id="FirstNCol">
+                        <Text text="First Name" id="txtFname"/>
                     </Column>
-                    <Column id="unitNumberColumn" hAlign="End">
-                        <Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
+                    <Column id="LastNCol">
+                        <Text text="Last Name" id="txtLName"/>
+                    </Column>
+                    <Column id="dlNumberCol">
+                        <Text text="DL Number" id="txtDLNum"/>
+                    </Column>
+                    <Column id="dlExpCol">
+                        <Text text="Exp Date" id="txtExpDt"/>
+                    </Column>
+                    <Column id="dlStCol">
+                        <Text text="State" id="txtSt"/>
                     </Column>
                 </columns>
 
                 <items>
                     <ColumnListItem
                         type="Navigation"
-                        press=".onPress">
+                        press=".onPress" id="colLi">
                         <cells>
                             <ObjectIdentifier
-                                title="{DriverUID}"/>
-                            <ObjectNumber />
+                                title="{DriverUID}" id="driverUID"/>                            
+                            <Label text="{FName}" id="lblFname" ></Label>
+                            <Label text="{LName}" id="lblLName"></Label>
+                            <Label text="{DLNumber}" id="lblDLNum"></Label>
+                            <Label text="{DLExpirationDt}" id="lblExpDt"></Label>
+                            <Label text="{DLState}" id="lblDLSt"></Label>
                         </cells>
                     </ColumnListItem>
                 </items>
