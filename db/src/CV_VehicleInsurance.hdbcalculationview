@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_VehicleInsurance" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="CV_VehicleInsurance"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="COM_SHOCKWAVECONSULTING_VEHICLE">
+    <resourceUri>COM_SHOCKWAVECONSULTING_VEHICLE</resourceUri>
+  </DataSource>
+  <DataSource id="COM_SHOCKWAVECONSULTING_DRIVER">
+    <resourceUri>COM_SHOCKWAVECONSULTING_DRIVER</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="DRIVERUID"/>
+      <viewAttribute id="FNAME"/>
+      <viewAttribute id="LNAME"/>
+      <viewAttribute id="DLNUMBER"/>
+      <viewAttribute id="DLEXPIRATIONDT"/>
+      <viewAttribute id="DLSTATE"/>
+      <viewAttribute id="TITLE"/>
+      <viewAttribute id="ISACTIVE"/>
+      <viewAttribute id="CREATEDDT"/>
+      <viewAttribute id="VEHICLEUID"/>
+      <viewAttribute id="VIN"/>
+      <viewAttribute id="LICENSEPLATE"/>
+      <viewAttribute id="BRAND"/>
+      <viewAttribute id="MODEL"/>
+      <viewAttribute hidden="true" id="JOIN$DRIVER$DRIVERUID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="COM_SHOCKWAVECONSULTING_VEHICLE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VEHICLEUID" source="VEHICLEUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VIN" source="VIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LICENSEPLATE" source="LICENSEPLATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND" source="BRAND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODEL" source="MODEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DRIVER$DRIVERUID" source="DRIVER"/>
+    </input>
+    <input node="COM_SHOCKWAVECONSULTING_DRIVER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DRIVERUID" source="DRIVERUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FNAME" source="FNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LNAME" source="LNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DLNUMBER" source="DLNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DLEXPIRATIONDT" source="DLEXPIRATIONDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DLSTATE" source="DLSTATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ISACTIVE" source="ISACTIVE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATEDDT" source="CREATEDDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DRIVER$DRIVERUID" source="DRIVERUID"/>
+    </input>
+    <joinAttribute name="JOIN$DRIVER$DRIVERUID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="DRIVERUID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DRIVERUID"/>
+      <keyMapping columnObjectName="Join_1" columnName="DRIVERUID"/>
+    </attribute>
+    <attribute id="FNAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FNAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="FNAME"/>
+    </attribute>
+    <attribute id="LNAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LNAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="LNAME"/>
+    </attribute>
+    <attribute id="DLNUMBER" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DLNUMBER"/>
+      <keyMapping columnObjectName="Join_1" columnName="DLNUMBER"/>
+    </attribute>
+    <attribute id="DLEXPIRATIONDT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DLEXPIRATIONDT"/>
+      <keyMapping columnObjectName="Join_1" columnName="DLEXPIRATIONDT"/>
+    </attribute>
+    <attribute id="DLSTATE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DLSTATE"/>
+      <keyMapping columnObjectName="Join_1" columnName="DLSTATE"/>
+    </attribute>
+    <attribute id="TITLE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TITLE"/>
+      <keyMapping columnObjectName="Join_1" columnName="TITLE"/>
+    </attribute>
+    <attribute id="ISACTIVE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ISACTIVE"/>
+      <keyMapping columnObjectName="Join_1" columnName="ISACTIVE"/>
+    </attribute>
+    <attribute id="CREATEDDT" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATEDDT"/>
+      <keyMapping columnObjectName="Join_1" columnName="CREATEDDT"/>
+    </attribute>
+    <attribute id="VEHICLEUID" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VEHICLEUID"/>
+      <keyMapping columnObjectName="Join_1" columnName="VEHICLEUID"/>
+    </attribute>
+    <attribute id="VIN" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VIN"/>
+      <keyMapping columnObjectName="Join_1" columnName="VIN"/>
+    </attribute>
+    <attribute id="LICENSEPLATE" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LICENSEPLATE"/>
+      <keyMapping columnObjectName="Join_1" columnName="LICENSEPLATE"/>
+    </attribute>
+    <attribute id="BRAND" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRAND"/>
+      <keyMapping columnObjectName="Join_1" columnName="BRAND"/>
+    </attribute>
+    <attribute id="MODEL" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MODEL"/>
+      <keyMapping columnObjectName="Join_1" columnName="MODEL"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-89" y="197"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="COM_SHOCKWAVECONSULTING_VEHICLE" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="845" y="54"/>
+      <rectangleSize width="313.57421875"/>
+    </shape>
+    <shape modelObjectName="COM_SHOCKWAVECONSULTING_DRIVER" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="452" y="40"/>
+      <rectangleSize width="306.90625"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
